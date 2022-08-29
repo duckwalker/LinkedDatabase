@@ -1,0 +1,62 @@
+[
+  {
+    "url": "http://192.168.10.238:8084/machine_read_bit?data_type=R&channel=25",
+    "description": "X-Core Read Input",
+    "type": "favourite",
+    "method": "get"
+  },
+  {
+    "url": "http://192.168.10.238:8084/machine_trigger?data_type=R&addr=17&value=0",
+    "description": "X-Core Trigger Off",
+    "type": "favourite",
+    "method": "get"
+  },
+  {
+    "url": "http://192.168.10.238:8084/machine_trigger?data_type=R&addr=17&value=1",
+    "description": "X-Core Trigger On",
+    "type": "favourite",
+    "method": "get"
+  },
+  {
+    "url": "http://192.168.10.41:8080/start/agv",
+    "description": "Start/Stop AGV Tasking System",
+    "type": "normal",
+    "method": "get"
+  },
+  {
+    "url": "http://192.168.10.41:8080/test/api",
+    "description": "Testing API",
+    "type": "normal",
+    "method": "get"
+  },
+  {
+    "url": "http://192.168.10.41:8888/control_api/save",
+    "description": "Save API data",
+    "type": "normal",
+    "method": "get"
+  },
+  {
+    "url": "http://192.168.10.71:5001/move_agv?location=m00_loader_robot",
+    "description": "MOVE AGV TO LOADER",
+    "type": "normal",
+    "method": "get"
+  },
+  {
+    "url": "http://192.168.10.71:5001/move_agv?location=m01_unloader_conveyor",
+    "description": "AGV Move To Unloader Conveyor",
+    "type": "normal",
+    "method": "get"
+  },
+  {
+    "url": "http://192.168.10.71:5001/move_agv?location=m01_unloader_robot",
+    "description": "AGV Move To Unloader Robot",
+    "type": "normal",
+    "method": "get"
+  },
+  {
+    "url": "http://192.168.10.71:5001/move_agv?location=m04_charge_module",
+    "description": "AGV CHARGE",
+    "type": "normal",
+    "method": "get"
+  }
+]

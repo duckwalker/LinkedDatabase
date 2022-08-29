@@ -1,4 +1,5 @@
 import datetime
+import json
 import time
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -24,11 +25,6 @@ app = FastAPI(title="Database Connector")
 s_request = requests.Session()
 
 def setup_api():
-    @app.post('/testing')
-    def testing_la(item: Testing_perpose):
-        print(item)
-        return True
-
     @app.post('/control_api/save')
     def save_api_setting(item: URL_INFO):
         item = item.json()
@@ -36,7 +32,13 @@ def setup_api():
 
     @app.get("/control_api/grab")
     def grab_api_setting():
-        return machine_data_source.machine_grab_data("control_api")
+        try:
+            file = machine_data_source.machine_grab_data("control_api")
+        except:
+            f = open('json_seed.json')
+            file = json.load(f)
+            f.close()
+        return file
 
     @app.post('/control_api/delete')
     def delete(item: URL_INFO):
@@ -57,7 +59,13 @@ def setup_api():
 
     @app.get("/user_login/grab")
     def grab_api_setting():
-        return user_login.machine_grab_data("user")
+        try:
+            file = user_login.machine_grab_data("user")
+        except:
+            f = open('user_seed.json')
+            file = json.load(f)
+            f.close()
+        return file
 
     @app.post('/user_login/delete')
     def delete(item: USER_INFO):
@@ -72,8 +80,8 @@ class MyFilter(object):
     def filter(self, logRecord):
         return logRecord.levelno <= self.__level
 
-machine_data_source = machine_data_server("192.168.10.41", "control_system", "92189218", "control_api")
-user_login = user_server("192.168.10.41", "control_system", "92189218", "control_api")
+machine_data_source = machine_data_server("192.168.10.42", "control_system", "92189218", "control_api")
+user_login = user_server("192.168.10.42", "control_system", "92189218", "control_api")
 try:
     logger = logging.getLogger(str(datetime.datetime.now()))
     logger.setLevel(logging.INFO)

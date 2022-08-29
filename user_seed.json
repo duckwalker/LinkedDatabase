@@ -1,0 +1,20 @@
+[
+  {
+    "user_name": "SAD MAN",
+    "password": "123456",
+    "role": "admin",
+    "description": "JUST A SAD MAN"
+  },
+  {
+    "user_name": "string",
+    "password": "string",
+    "role": "string",
+    "description": "string"
+  },
+  {
+    "user_name": "TIRED MAN",
+    "password": "123456",
+    "role": "operator",
+    "description": "A tired operator"
+  }
+]
