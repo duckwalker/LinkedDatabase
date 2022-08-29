@@ -34,10 +34,12 @@ def setup_api():
     def grab_api_setting():
         try:
             file = machine_data_source.machine_grab_data("control_api")
-        except:
+        except Exception as e:
+            print(e)
             f = open('json_seed.json')
             file = json.load(f)
             f.close()
+        print(file)
         return file
 
     @app.post('/control_api/delete')

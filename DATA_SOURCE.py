@@ -56,11 +56,12 @@ class machine_data_server:
 
     def database_login(self):
         return mysql.connector.connect(host=self.database_host, user=self.database_user, password=self.database_password,
-                                               database=self.database_name)
+                                               database=self.database_name, connect_timeout=1)
 
     def machine_count(self):
         agv_database = self.database_login()
         db_cursor = agv_database.cursor()
+        db_cursor.execute("SET SESSION MAX_EXECUTION_TIME=100")
         db_cursor.execute("SHOW TABLES")
         table = []
         for i in db_cursor:
